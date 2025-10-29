@@ -83,16 +83,48 @@ docs: documentation updates
 chore: maintenance tasks
 ```
 
+**Best Practice for Clean Changelogs:**
+
+- **On `main` branch**: Use scoped commits for visibility across the monorepo
+
+  ```bash
+  git commit -m "feat(foo): add authentication middleware"
+  git commit -m "fix(bar): resolve memory leak"
+  ```
+
+- **On release branches** (`release/foo/v1.x`, etc.): Omit the scope for cleaner changelogs
+
+  ```bash
+  # On release/foo/v1.x branch
+  git commit -m "feat: add authentication middleware"
+  git commit -m "fix: resolve memory leak"
+  ```
+
+Since each app has its own `CHANGELOG.md` in its directory, the scope prefix is redundant on release branches. This keeps your changelogs clean while maintaining visibility in the main branch history.
+
 ### Example Commits
 
-```bash
-# For Foo application
-git commit -m "feat(foo): add authentication middleware"
-git commit -m "fix(foo): resolve memory leak in handler"
+**On `main` branch (use scopes):**
 
-# For Bar application
-git commit -m "feat(bar): add new API endpoint"
+```bash
+# Multi-app changes or cross-cutting concerns
+git commit -m "feat(foo): add authentication middleware"
 git commit -m "fix(bar): correct response headers"
+git commit -m "chore(deps): update Go dependencies"
+```
+
+**On release branches (omit scopes for cleaner changelogs):**
+
+```bash
+# On release/foo/v1.x
+git checkout release/foo/v1.x
+git commit -m "feat: add new API endpoint"
+git commit -m "fix: resolve memory leak in handler"
+
+# On release/bar/v2.x
+git checkout release/bar/v2.x
+git commit -m "feat: add caching layer"
+git commit -m "fix: correct response encoding"
 ```
 
 ## 🛠️ Development
