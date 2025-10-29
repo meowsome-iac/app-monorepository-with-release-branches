@@ -1,0 +1,27 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+      - "release/foo/v1.x"
+      - "release/foo/v2.x"
+      - "release/bar/v1.x"
+      - "release/bar/v2.x"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        with:
+          # Token for creating releases and PRs
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Use manifest-based configuration for monorepo
+          config-file: .github/release-please-config.json
+          manifest-file: .release-please-manifest.json

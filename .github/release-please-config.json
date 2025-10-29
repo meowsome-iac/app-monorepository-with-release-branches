@@ -1,0 +1,78 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "packages": {
+        "apps/foo": {
+            "component": "foo",
+            "release-type": "go",
+            "changelog-path": "CHANGELOG.md",
+            "include-component-in-tag": true,
+            "include-v-in-tag": true,
+            "extra-files": [
+                "go.mod"
+            ]
+        },
+        "apps/bar": {
+            "component": "bar",
+            "release-type": "go",
+            "changelog-path": "CHANGELOG.md",
+            "include-component-in-tag": true,
+            "include-v-in-tag": true,
+            "extra-files": [
+                "go.mod"
+            ]
+        }
+    },
+    "release-search-depth": 10,
+    "separate-pull-requests": true,
+    "group-pull-request-title-pattern": "chore: release ${version}",
+    "changelog-sections": [
+        {
+            "type": "feat",
+            "section": "Features"
+        },
+        {
+            "type": "fix",
+            "section": "Bug Fixes"
+        },
+        {
+            "type": "perf",
+            "section": "Performance Improvements"
+        },
+        {
+            "type": "revert",
+            "section": "Reverts"
+        },
+        {
+            "type": "docs",
+            "section": "Documentation"
+        },
+        {
+            "type": "style",
+            "section": "Styles",
+            "hidden": true
+        },
+        {
+            "type": "chore",
+            "section": "Miscellaneous Chores",
+            "hidden": true
+        },
+        {
+            "type": "refactor",
+            "section": "Code Refactoring"
+        },
+        {
+            "type": "test",
+            "section": "Tests",
+            "hidden": true
+        },
+        {
+            "type": "build",
+            "section": "Build System"
+        },
+        {
+            "type": "ci",
+            "section": "Continuous Integration",
+            "hidden": true
+        }
+    ]
+}
